@@ -1,0 +1,13 @@
+FROM mysql:8.4.0
+
+# sqlをdockerで実行
+COPY init.sql /docker-entrypoint-initdb.d/init.sql
+
+# 環境変数の設定
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_DATABASE=test_db
+ENV MYSQL_USER=test
+ENV MYSQL_PASSWORD=test
+
+# ボリューム
+VOLUME ./data:/var/lib/mysql
